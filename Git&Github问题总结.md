@@ -28,11 +28,8 @@ $ ssh-add -l
 
 ## Error with renamed repo in github, “remote: This repository moved. Please use the new location”
 
-> The simple way is:
-
- git remote set-url origin [updated link url https://........git]
-Alternatively, if you like the long way it is:
-
- git remote rm origin
- git remote add origin [updated link]
-[Changing a remote's URL](https://help.github.com/articles/changing-a-remote-s-url/) github documentation goes into further detail.
+> git remote set-url origin [updated link url https://........git]
+> or
+> git remote rm origin
+> git remote add origin [updated link]
+> [Changing a remote's URL](https://help.github.com/articles/changing-a-remote-s-url/) github documentation goes into further detail.
