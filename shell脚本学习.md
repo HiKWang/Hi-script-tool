@@ -109,3 +109,29 @@ $ ./finduser hikwang
 - 没有后向引用
 - `\char`表示转义，因而`ab*{n,m}`中`{}`不需要反斜杠
 - ERE表达式和JS的正则相似
+
+## `sed`
+- `sed`:Stream Editor
+- s命令:使用正则表达式匹配，`sed 's/:.*//' /etc/passwd`表示删除/etc/passwd中第一个冒号后的所有东西；
+-　`/`为最常用定界符，任何可显示字符都可作为定界符；
+- 支持后向匹配，`sed 's;\(/home\)/opt;\1/opts;'` `\1`表示`/home`；
+- `&`:?
+- `g`表示匹配全部，没有在结尾加`g`则只匹配第一个;
+- `sed 's/Tom/Lily/2'` 表示只匹配第二个;
+- `-e`
+`sed -e 's/Tom/Jery/' -e 's/Lily/Meimei/' myfile.xml > myfile2.xml`
+- `-f`
+```shell
+cat > commond.sed
+s/Tom/Jery/
+s/Lily/Meimei/
+^D
+sed -f 'commond.sed' > myfile2.xml
+```
+- '模式空间(pattern space)'
+> sed读取每个文件,一次读一行,将读入的行放入内存的一个区域叫模式空间.
+sed读一行文本 --> 放入内存 --> 操作应用于此内存内容 --> 输出 --> 继续读入下一行
+- `-n`关闭打印
+- `p`打印当前匹配
+`sed -n '/<HTML>/p' *.html` 仅显示<HTML>这行
+- `#`用于注释,必须单独一行
