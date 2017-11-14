@@ -7,3 +7,10 @@
 ## load()
 load(url, data, complete)
 url #query，url空格后跟`#query`可以返回id为query的html内容。注意url和`#`之间有空格.
+
+## 获取当前元素索引值
+```jquery
+$("li").hover(function(){ 
+      alert($("li").index(this)); 
+});
+```

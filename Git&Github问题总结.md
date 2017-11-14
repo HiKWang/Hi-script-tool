@@ -33,3 +33,13 @@ $ ssh-add -l
 > git remote rm origin
 > git remote add origin [updated link]
 > [Changing a remote's URL](https://help.github.com/articles/changing-a-remote-s-url/) github documentation goes into further detail.
+
+## Error: Key already in use
+- 原因：
+通常情况是因为某个repo占用了这个key。导致其他repo不能使用。
+
+- 解决方法：
+将这个多数repo都会用到的key[放到账号设置下](https://help.github.com/articles/adding-a-new-ssh-key-to-your-github-account/)。
+账号下设置的key对账号下所有repo通用。
+
+[github官方帮助文档](https://help.github.com/articles/error-key-already-in-use/)
