@@ -8,7 +8,7 @@ md_toc="\n[TOC]\n"
 echo '请输入文件名称:'
 read md_name    # read读取用户输入并赋值给变量
 
-md_init_str=$md_title"\n"$md_name"\n"$md_createtime$md_updatetime$md_toc
+md_init_str=$md_title$md_name"\n\n"$md_createtime$md_updatetime$md_toc
 md_file=$md_name'.md'
 doc_path="/home/hikwang/Documents/evernote/kh-summary/"
 md_file_path=$doc_path$md_file
