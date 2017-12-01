@@ -1,0 +1,4 @@
+#! /bin/bash
+
+# open some file(ex. *.html/*.md) in google-chrome browser
+export DISPLAY=:0 && google-chrome $1
