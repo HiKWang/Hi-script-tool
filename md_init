@@ -1,14 +1,13 @@
 #!/bin/bash
 
-md_title="# "
-md_author="作者：[HiKWang](https://hikwang.github.io)\n"
-md_createtime="创建时间："`date "+%F %H:%M:%S"`"\n"
-md_toc="\n[TOC]\n"
+md_author="作者：[HiKWang](https://hikwang.github.io)\n\n"
+md_createtime="创建时间："`date "+%F %H:%M:%S"`"\n\n"
+md_toc="\n[TOC]\n\n"
 
 echo '请输入文件名称:'
 read md_name    # read读取用户输入并赋值给变量
 
-md_init_str=$md_title$md_name"\n\n"$md_author$md_createtime$md_toc
+md_init_str=$md_author$md_createtime$md_toc
 md_file=$md_name'.md'
 doc_path="/home/hikwang/Documents/evernote/kh-summary/"
 md_file_path=$doc_path$md_file
