@@ -1,0 +1,22 @@
+#!/usr/bin/expect -f  
+set localPath [lindex $argv 0 ]  
+set file [lindex $argv 1 ]  
+set ip  ftpw.maipu.com 
+set dir fixbug 
+set timeout 10  
+spawn ftp $ip  
+expect "Name*"  
+send "005751\r"  
+expect "Password:*"  
+send "mp1hikwang~\r"  
+expect "ftp>*"  
+send "cd $dir\r"  
+expect "ftp>*"  
+send "put $localPath/$file ./$file\r"
+expect {  
+    "*Transfer complete*"  { send "quit\r" }  
+}  
+expect {  
+    "*No such file or directory" { send "quit\r" }  
+}  
+expect eof 

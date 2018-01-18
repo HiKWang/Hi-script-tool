@@ -1,0 +1,29 @@
+#! /bin/bash
+# 快速在git中打包补丁文件并准备好传输到内网的工具
+
+echo 'COMMIT_ID'
+read commitId
+
+echo 'PATCH_NAME'
+read patchName
+
+# TODO 检查文件名是否重复 可根据ls查
+
+patchPath='/home/hikwang/www/fixbug'
+fileName=$patchName'.zip'
+
+git diff-tree -r --no-commit-id --name-only $commitId | xargs zip -r $patchPath'/'$fileName
+
+# open Files
+#nautilus $patchPath
+
+# open filezilla
+#filezilla --site="0/ftpw" --local="/home/hikwang/www/fixbug" 1>/dev/null 2>/dev/null &
+
+# 上传补丁到共享文件夹
+# TODO 检查文件夹和文件是否存在
+if [ $? -eq 0 ];then
+    auto_ftpw $patchPath $fileName
+else
+    echo "exit: $?\r补丁打包失败";
+fi
