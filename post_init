@@ -1,27 +1,33 @@
 #!/bin/bash
 
 echo '文章标题'
-read title
+read tmpTitle
+title=${tmpTitle:="新建文章"}
 
 echo '文章副标题'
-read subtitle
+read tmpSubtitle
+subtitle=${tmpSubtitle:=""}
 
-echo '分类'
-read categories
+echo '分类(默认：技术)'
+read tmpCategories
+categories=${tmpCategories:="技术"}
+
 
 echo '背景图（默认：circuitBoard）'
-read pat
+read tmpPat
+pat=${tmpPat:="circuitBoard"}
 
 echo '标签（以空格分隔）'
-read tags
+read tmpTags
+tags=${tmpTags:=" "}
 
-date=`date +%F`
+date=`date "+%F %H:%M:%S"`
 
 headerStr="---\nlayout: post\ntitle: $title\nsubtitle: $subtitle\ndate: $date\ncategories: $categories\npostPatterns: $pat\ntags: $tags\n---"
 
 postName=$date'-'$title'.md'
 
-postPath='/home/hikwang/www/hikwang.github.io/_posts/'
+postPath='/home/hikwang/github/hikwang.github.io/_posts/'
 
 touch $postPath$postName
 
