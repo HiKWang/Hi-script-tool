@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# @Desc: 从远程服务器下载代码并提交到git
+# @Author: kuangheng
+# @CreateDate: 2018-06-17 10:32
+
 echo "请输入服务器地址(默认值：10.10.82.12)"
 read tmpIp
 ip=${tmpIp:="10.10.82.12"}
@@ -8,7 +12,7 @@ echo "请输入远程服务器代码路径(默认值：/home/kh/)"
 read tmpRemotePath
 remotePath=${tmpRemotePath:="/home/kh/"}
 
-echo "请输入本地代码路径(默认：/home/hikwang/www/wlannm-fe/)"
+echo "请输入本地代码路径(默认值：/home/hikwang/www/wlannm-fe/)"
 read tmpLocalProjectPath
 localProjectPath=${tmpLocalProjectPath:="/home/hikwang/www/wlannm-fe/"}
 
@@ -39,7 +43,7 @@ if [ "$?" -eq 0 ]; then
         echo ${res}
         echo "==================================="
         echo "还有文件没有提交！"
-        exit 5
+        exit 1
     fi
 fi
 
@@ -48,7 +52,7 @@ if [ "$?" -eq 0 ] && [ "$commitFlag" = "true" ]; then
     rm -rf $localProjectPath*
 else
     echo "删除旧文件失败"
-    exit 1
+    exit 2
 fi
 
 # 重新下载新版本项目文件
@@ -56,7 +60,7 @@ if [ "$?" -eq 0 ]; then
     rsync -a root@${ip}:${remotePath} $localProjectPath
 else
     echo "代码下载失败！"
-    exit 2
+    exit 3
 fi
 
 # 添加到库 `add .`
@@ -64,17 +68,16 @@ if [ "$?" -eq 0 ]; then
     git add .
 else
     echo "添加到库失败！"
-    exit 3
+    exit 4
 fi
 
 # commit
 commitDate=`date "+%F|%H:%M:%S"`
 if [ "$?" -eq 0 ]; then
     git commit -m "============"${commitDate}"================"
-    exit 0
 else
     echo "commit失败！"
-    exit 4
+    exit 5
 fi
 
 # 完成
