@@ -25,10 +25,10 @@ date=`date "+%F %H:%M:%S"`
 
 headerStr="---\nlayout: post\ntitle: $title\nsubtitle: $subtitle\ndate: $date\ncategories: $categories\npostPatterns: $pat\ntags: $tags\n---"
 
-postName=$date'-'$title'.md'
+postName=`date "+%F"`'-'$title'.md'
 
 postPath='/home/hikwang/github/hikwang.github.io/_posts/'
 
 touch $postPath$postName
 
-echo -e $headerStr > $postPath$postName
+echo -e $headerStr > "$postPath$postName"

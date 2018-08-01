@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
 # @Name: push2github.sh
 # @Desc:自动提交并推送修改到github
