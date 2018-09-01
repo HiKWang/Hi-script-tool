@@ -1,9 +1,12 @@
 #!/bin/bash
 
+<<<<<<< HEAD
 # @Desc: 从远程服务器下载代码并提交到git
 # @Author: kuangheng
 # @CreateDate: 2018-06-17 10:32
 
+=======
+>>>>>>> 0cd5a34d93498f70d8212a5494bb699bf4fe8cef
 echo "请输入服务器地址(默认值：10.10.82.12)"
 read tmpIp
 ip=${tmpIp:="10.10.82.12"}
@@ -12,7 +15,11 @@ echo "请输入远程服务器代码路径(默认值：/home/kh/)"
 read tmpRemotePath
 remotePath=${tmpRemotePath:="/home/kh/"}
 
+<<<<<<< HEAD
 echo "请输入本地代码路径(默认值：/home/hikwang/www/wlannm-fe/)"
+=======
+echo "请输入本地代码路径(默认：/home/hikwang/www/wlannm-fe/)"
+>>>>>>> 0cd5a34d93498f70d8212a5494bb699bf4fe8cef
 read tmpLocalProjectPath
 localProjectPath=${tmpLocalProjectPath:="/home/hikwang/www/wlannm-fe/"}
 
