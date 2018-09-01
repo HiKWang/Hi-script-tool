@@ -23,13 +23,13 @@ else
     exit 2
 fi
 
-# 提取app目录下文件夹
+# 提取相关目录下文件夹
 if [ $? -eq 0 ]; then
-    mv ${unpackPath}"META-INF/resources/app/"* $unpackPath
+    mv ${unpackPath}"META-INF/resources/app" $unpackPath
 fi
 
 if [ $? -eq 0 ]; then
-    mv ${unpackPath}"META-INF/resources/libs/assets/js/MPWlanPlanMap.js" $unpackPath
+    mv ${unpackPath}"META-INF/resources/libs" $unpackPath
 fi
 
 # 删除多余文件
