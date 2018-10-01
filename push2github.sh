@@ -24,7 +24,9 @@ function handleGit(){
     fi
 
     if [ $? -eq 0 ];then
-        git commit -m 'auto push github'
+        echo "commitMsg(auto push github):"
+        read commitMsg
+        git commit -m ${commitMsg:='auto push github'}
     fi
 
     #if [ $? -eq 0 ];then
