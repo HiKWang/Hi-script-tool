@@ -13,7 +13,7 @@ function handleGit(){
     # 没有需要提交的文件结果返回1
     if [[ "$res" =~ "$commitFlagStr" ]];then
         echo "========= Return:Nothing To Commit ========="
-        echo "\n"
+        echo -e "\r"
         return 1
     fi
 
@@ -33,7 +33,7 @@ function handleGit(){
 
     if [ $? -eq 0 ];then
         echo "=== End:Push To Complete ==="
-        echo "\r\n"
+        echo -e "\r"
     fi
 
 }
