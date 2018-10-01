@@ -12,7 +12,8 @@ function handleGit(){
 
     # 没有需要提交的文件结果返回1
     if [[ "$res" =~ "$commitFlagStr" ]];then
-        echo "========== Return:Nothing To Commit ========="
+        echo "========= Return:Nothing To Commit ========="
+        echo "\r"
         return 1
     fi
 
@@ -31,7 +32,8 @@ function handleGit(){
     fi
 
     if [ $? -eq 0 ];then
-        echo "======== End:Push To Complete ======="
+        echo "=== End:Push To Complete ==="
+        echo "\r"
     fi
 
 }
@@ -43,7 +45,7 @@ gitDir=("/home/hikwang/github/Hi-config-files" "/home/hikwang/github/hikwang.git
 for((i=0; i<${#gitDir[*]}; i++))
 do
     # 依次进入相应目录
-    echo "======= Start:${gitDir[$i]} ======="
+    echo "=== Start:${gitDir[$i]} ==="
     cd ${gitDir[$i]}
     if [ $? -eq 0 ];then
         handleGit
