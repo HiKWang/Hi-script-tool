@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # @Name: push2github.sh
-# @Desc:自动提交并推送修改到github
+# @Desc: 自动提交并推送修改到github
 # @Author: kuangheng
 # @Date: 2018.07.05
 
@@ -13,7 +13,7 @@ function handleGit(){
     # 没有需要提交的文件结果返回1
     if [[ "$res" =~ "$commitFlagStr" ]];then
         echo "========= Return:Nothing To Commit ========="
-        echo "\r"
+        echo "\n"
         return 1
     fi
 
@@ -27,13 +27,13 @@ function handleGit(){
         git commit -m 'auto push github'
     fi
 
-    if [ $? -eq 0 ];then
-        git push origin master
-    fi
+    #if [ $? -eq 0 ];then
+        #git push origin master
+    #fi
 
     if [ $? -eq 0 ];then
         echo "=== End:Push To Complete ==="
-        echo "\r"
+        echo "\r\n"
     fi
 
 }
