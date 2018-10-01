@@ -4,6 +4,8 @@
 # @Desc: 自动提交并推送修改到github
 # @Author: kuangheng
 # @Date: 2018.07.05
+# TODO:
+#   增加提示的颜色
 
 # git add commit push
 function handleGit(){
@@ -30,11 +32,12 @@ function handleGit(){
         git commit -m ${commitMsg:='auto push github'}
     fi
 
-    #if [ $? -eq 0 ];then
-        #git push origin master
-    #fi
+    if [ $? -eq 0 ];then
+        git push origin master
+    fi
 
     if [ $? -eq 0 ];then
+        echo -e "\r"
         echo "=== End:Push To Complete ==="
         echo -e "\r"
     fi
