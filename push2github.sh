@@ -12,6 +12,7 @@ function handleGit(){
 
     # 没有需要提交的文件结果返回1
     if [[ "$res" =~ "$commitFlagStr" ]];then
+        echo "========== Return:Nothing To Commit ========="
         return 1
     fi
 
@@ -29,6 +30,10 @@ function handleGit(){
         git push origin master
     fi
 
+    if [ $? -eq 0 ];then
+        echo "======== End:Push To Complete ======="
+    fi
+
 }
 # 需要push的目录 gitDir为数组
 gitDir=("/home/hikwang/github/Hi-config-files" "/home/hikwang/github/hikwang.github.io/_posts" "/home/hikwang/github/Hi-script-tool" "/home/hikwang/github/KHSummaries" "/home/hikwang/bin" "/home/hikwang/www/FELib
@@ -38,6 +43,7 @@ gitDir=("/home/hikwang/github/Hi-config-files" "/home/hikwang/github/hikwang.git
 for((i=0; i<${#gitDir[*]}; i++))
 do
     # 依次进入相应目录
+    echo "======= Start:${gitDir[$i]} ======="
     cd ${gitDir[$i]}
     if [ $? -eq 0 ];then
         handleGit
