@@ -18,6 +18,7 @@ function handleGit(){
     fi
 
     git pull
+    echo -e "\r"
 
     if [ $? -eq 0 ];then
         git add .
