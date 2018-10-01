@@ -15,7 +15,11 @@ function handleGit(){
         return 1
     fi
 
-    git add .
+    git pull
+
+    if [ $? -eq 0 ];then
+        git add .
+    fi
 
     if [ $? -eq 0 ];then
         git commit -m 'auto push github'
