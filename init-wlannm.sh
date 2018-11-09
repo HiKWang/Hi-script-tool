@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# @Desc: 从远程服务器下载代码并提交到git
+# @Desc: 从远程服务器下载wlannm代码并提交到git
 # @Author: kuangheng
 # @CreateDate: 2018-06-17 10:32
 
