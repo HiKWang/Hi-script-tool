@@ -14,7 +14,7 @@ function handleGit(){
 
     # 没有需要提交的文件结果返回1
     if [[ "$res" =~ "$commitFlagStr" ]];then
-        echo "========= Return:Nothing To Commit ========="
+        echo "========= Nothing To Commit ========="
         echo -e "\r"
         return 1
     fi
