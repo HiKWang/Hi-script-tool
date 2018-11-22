@@ -10,9 +10,9 @@ echo "请输入服务器地址(默认值：10.10.82.34)"
 read tmpIp
 ip=${tmpIp:="10.10.82.34"}
 
-echo "请输入远程服务器代码路径(默认值：/home/mpup/mpupdefault/plugins/mpupweb/ui/)"
+echo "请输入远程服务器代码路径(默认值：/home/mpup/mpupdefault/plugins/mpup-web/)"
 read tmpRemotePath
-remotePath=${tmpRemotePath:="/home/mpup/mpupdefault/plugins/mpupweb/ui/"}
+remotePath=${tmpRemotePath:="/home/mpup/mpupdefault/plugins/mpup-web/"}
 
 echo "请输入要更新的代码目录名称，名称以空格分隔(默认值：framework project)"
 read tmpFileName
