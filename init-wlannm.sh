@@ -57,7 +57,7 @@ fi
 
 # 重新下载新版本项目文件
 if [ "$?" -eq 0 ]; then
-    rsync -a root@${ip}:${remotePath} $localProjectPath
+    rsync -a --no-o root@${ip}:${remotePath} $localProjectPath
 else
     echo "代码下载失败！"
     exit 3

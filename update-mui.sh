@@ -58,7 +58,8 @@ fi
 if [ "$?" -eq 0 ]; then
     for file in $fileName
     do
-        sudo rsync -a root@${ip}:${remotePath}${file} $localProjectPath
+        # --no-owner 同步时不保留源地址目录的所有者
+        sudo rsync -a --no-owner root@${ip}:${remotePath}${file} $localProjectPath
 
         if [ "$?" -ne 0 ]; then
             echo "代码下载失败！请重试。"
@@ -81,7 +82,7 @@ fi
 # commit
 commitDate=`date "+%F|%H:%M:%S"`
 if [ "$?" -eq 0 ]; then
-    git commit -m "============"${commitDate}"================"
+    git commit -m "============ update from "${ip}" at "${commitDate}" ================"
 
     if [ "$?" -ne 0 ]; then
         echo "commit失败！"
