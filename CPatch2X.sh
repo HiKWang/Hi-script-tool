@@ -7,23 +7,26 @@ read commitId
 echo 'HOST_IP'
 read hostIp
 
-patchPath='/home/hikwang/Documents/wifiphp-patch/'
-fileName='wifiphp.zip'
-zipPath='/home/hikwang/Documents/' 
-zipName='wifiphp-patch.zip'
 
-git diff-tree -r --no-commit-id --name-only $commitId | xargs zip -r $patchPath$fileName
+createTime=`date "+%F|%H:%M"`
+patchPath='/home/hikwang/Downloads/tmp/wifiphp-patch/'
+fileName='wifiphp-'$createTime'.zip'
+zipFile=$patchPath$fileName
+
+# 检查补丁目录是否存在
+if [ ! -d "$patchPath" ];then
+    mkdir -p "$patchPath"
+else
+    git diff-tree -r --no-commit-id --name-only $commitId | xargs zip -r $zipFile
+fi
 
 if [ $? -eq 0 ];then
-    cd $zipPath
-    zip -r $zipName 'wifiphp-patch' 
-    scp $zipName 'root@'$hostIp':/home/'
+    scp $zipFile 'root@'$hostIp':/home/'
 
     # 上传成功删除补丁
-    if [ $? -eq 0 ];then
-        rm $patchPath$fileName
-        rm $zipPath$zipName
-    fi
+    #if [ $? -eq 0 ];then
+        #rm $zipFile
+    #fi
 else
     echo "exit: $? errorMsg: 补丁打包失败";
 fi
