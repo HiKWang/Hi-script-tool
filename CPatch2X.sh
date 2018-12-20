@@ -8,9 +8,9 @@ echo 'HOST_IP'
 read hostIp
 
 
-createTime=`date "+%F|%H:%M"`
+createTime=`date "+%F-%H-%M"`
 patchPath='/home/hikwang/Downloads/tmp/wifiphp-patch/'
-fileName='wifiphp-'$createTime'.zip'
+fileName='wifiphp_'$createTime'.zip'
 zipFile=$patchPath$fileName
 
 # 检查补丁目录是否存在
