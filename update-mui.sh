@@ -6,9 +6,14 @@
 
 # 获取服务器地址、代码路径、
 # 要更新的代码目录名称(名称以空格隔开 以此转换为list)
-echo "请输入服务器地址(默认值：10.10.82.34)"
+
+# TODO 删除framework project 再下载
+# TODO 下载后删除project/page.js
+# TODO 下载后修改framework project 文件夹属主
+
+echo "请输入服务器地址(默认值：10.10.9.86)"
 read tmpIp
-ip=${tmpIp:="10.10.82.34"}
+ip=${tmpIp:="10.10.9.86"}
 
 echo "请输入远程服务器代码路径(默认值：/home/mpup/mpupdefault/plugins/mpup-web/)"
 read tmpRemotePath
