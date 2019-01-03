@@ -28,7 +28,7 @@ function handleGit(){
     fi
 
     if [ $? -eq 0 ];then
-        echo "commitMsg('auto push github'):"
+        echo -e "\e[1mcommitMsg('auto push github'):\e[0m"
         read commitMsg
         git commit -m "${commitMsg:='auto push github'}"
     fi
@@ -39,7 +39,7 @@ function handleGit(){
 
     if [ $? -eq 0 ];then
         echo -e "\r"
-        echo "=== End:Push To Complete ==="
+        echo -e "\e[92m=== End:Push To Complete ===\e[0m"
         echo -e "\r"
     fi
 
@@ -51,7 +51,7 @@ gitDir=("/home/hikwang/github/Hi-config-files" "/home/hikwang/github/hikwang.git
 for((i=0; i<${#gitDir[*]}; i++))
 do
     # 依次进入相应目录
-    echo "=== Start:${gitDir[$i]} ==="
+    echo -e "\e[1m=== Start:${gitDir[$i]} ===\e[0m"
     cd ${gitDir[$i]}
     if [ $? -eq 0 ];then
         handleGit
