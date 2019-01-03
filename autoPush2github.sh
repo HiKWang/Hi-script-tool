@@ -6,6 +6,7 @@
 # @Date: 2018.07.05
 # TODO:
 #   增加提示的颜色
+#   通过find查找需要提交推送的目录
 
 # git add commit push
 function handleGit(){
@@ -44,7 +45,7 @@ function handleGit(){
 
 }
 # 需要push的目录 gitDir为数组
-gitDir=("/home/hikwang/github/Hi-config-files" "/home/hikwang/github/hikwang.github.io/_posts" "/home/hikwang/github/Hi-script-tool" "/home/hikwang/github/KHSummaries" "/home/hikwang/bin" "/home/hikwang/www/FELib" "/home/hikwang/www/Practice-Demo")
+gitDir=("/home/hikwang/github/Hi-config-files" "/home/hikwang/github/hikwang.github.io/_posts" "/home/hikwang/github/Hi-script-tool" "/home/hikwang/github/KHSummaries" "/home/hikwang/bin" "/home/hikwang/github/FELib" "/home/hikwang/github/Practice-Demo")
 
 # 检查git是否有需要提交的文件
 for((i=0; i<${#gitDir[*]}; i++))
