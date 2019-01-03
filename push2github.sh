@@ -5,7 +5,6 @@
 # @Author: kuangheng
 # @Date: 2018.07.05
 # TODO:
-#   增加提示的颜色
 #   通过find查找需要提交推送的目录
 
 # git add commit push
@@ -28,7 +27,7 @@ function handleGit(){
     fi
 
     if [ $? -eq 0 ];then
-        echo -e "\e[1mcommitMsg('auto push github'):\e[0m"
+        echo -e "\e[4mcommitMsg('auto push github'):\e[0m"
         read commitMsg
         git commit -m "${commitMsg:='auto push github'}"
     fi

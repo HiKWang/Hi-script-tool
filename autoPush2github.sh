@@ -1,11 +1,10 @@
 #!/bin/bash
 
-# @Name: push2github.sh
-# @Desc: 自动提交并推送修改到github
+# @Name: autoPush2github.sh
+# @Desc: 无交互自动提交并推送修改到github
 # @Author: kuangheng
 # @Date: 2018.07.05
 # TODO:
-#   增加提示的颜色
 #   通过find查找需要提交推送的目录
 
 # git add commit push
@@ -15,13 +14,13 @@ function handleGit(){
 
     # 没有需要提交的文件结果返回1
     if [[ "$res" =~ "$commitFlagStr" ]];then
-        echo "========= Nothing To Commit ========="
-        echo -e "\r"
+        #echo "========= Nothing To Commit ========="
+        #echo -e "\r"
         return 1
     fi
 
     git pull
-    echo -e "\r"
+    #echo -e "\r"
 
     if [ $? -eq 0 ];then
         git add .
@@ -37,11 +36,11 @@ function handleGit(){
         git push origin master
     fi
 
-    if [ $? -eq 0 ];then
-        echo -e "\r"
-        echo "=== End:Push To Complete ==="
-        echo -e "\r"
-    fi
+    #if [ $? -eq 0 ];then
+        #echo -e "\r"
+        #echo "=== End:Push To Complete ==="
+        #echo -e "\r"
+    #fi
 
 }
 # 需要push的目录 gitDir为数组
@@ -51,7 +50,7 @@ gitDir=("/home/hikwang/github/Hi-config-files" "/home/hikwang/github/hikwang.git
 for((i=0; i<${#gitDir[*]}; i++))
 do
     # 依次进入相应目录
-    echo "=== Start:${gitDir[$i]} ==="
+    #echo "=== Start:${gitDir[$i]} ==="
     cd ${gitDir[$i]}
     if [ $? -eq 0 ];then
         handleGit
