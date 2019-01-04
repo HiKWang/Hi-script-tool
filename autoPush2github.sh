@@ -9,18 +9,19 @@
 
 # git add commit push
 function handleGit(){
-    commitFlagStr="nothing to commit, working directory clean"
-    res=$(git status)
-
-    # 没有需要提交的文件结果返回1
-    if [[ "$res" =~ "$commitFlagStr" ]];then
-        #echo "========= Nothing To Commit ========="
-        #echo -e "\r"
-        return 1
-    fi
-
     git pull
-    #echo -e "\r"
+
+    if [ $? -eq 0 ];then
+        commitFlagStr="nothing to commit, working directory clean"
+        res=$(git status)
+
+        # 没有需要提交的文件结果返回1
+        if [[ "$res" =~ "$commitFlagStr" ]];then
+            #echo "========= Nothing To Commit ========="
+            #echo -e "\r"
+            return 1
+        fi
+    fi
 
     if [ $? -eq 0 ];then
         git add .
