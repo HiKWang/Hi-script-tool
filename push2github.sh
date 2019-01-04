@@ -10,6 +10,7 @@
 # git add commit push
 function handleGit(){
 
+    echo -e "\e[2mbegin to update local repo...\e[0m"
     git pull
     echo -e "\r"
 
