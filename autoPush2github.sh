@@ -45,7 +45,7 @@ function handleGit(){
 
 }
 # 需要push的目录 gitDir为数组
-gitDir=("/home/hikwang/github/Hi-config-files" "/home/hikwang/github/hikwang.github.io/_posts" "/home/hikwang/github/KHSummaries" "/home/hikwang/bin" "/home/hikwang/github/Hi-FELib" "/home/hikwang/github/Practice-Demo" "/home/hikwang/github/mybasebak")
+gitDir=("/home/hikwang/github/Hi-config-files" "/home/hikwang/github/hikwang.github.io/_posts" "/home/hikwang/github/KHSummaries" "/home/hikwang/bin" "/home/hikwang/github/Hi-FELib" "/home/hikwang/github/Practice-Demo" "/home/hikwang/github/mybasebak" "/home/hikwang/github/Hiwm")
 
 # 检查git是否有需要提交的文件
 for((i=0; i<${#gitDir[*]}; i++))
