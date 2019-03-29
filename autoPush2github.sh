@@ -2,7 +2,7 @@
 
 # @Name: autoPush2github.sh
 # @Desc: 无交互自动提交并推送修改到github
-# @Author: kuangheng
+# @Author: KuangHeng
 # @Date: 2018.07.05
 # TODO:
 #   通过find查找需要提交推送的目录
