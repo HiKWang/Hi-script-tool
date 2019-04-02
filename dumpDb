@@ -9,10 +9,78 @@
 # 1.导出文件名称包含当前日期
 # 2.删除七天前的文件
 
-# mysqldump -h localhost -uroot -proot --databases db1 > /home/sql/
+# mysqldump -h localhost -uroot -proot --databases db1 > /home/sql/mpup_api_date.sql
 
-echo -e "\e[2mInput the hostName:\e[0m"
-read hostName
+homePath=`cd ~;pwd`
+defaultBackupPath=${homePath}/mpup_api_sql_backup/
 
-echo -e "\e[2mInput the DB username:\e[0m"
-reade userName
+echo -e "\e[2mInput the hostName/IP(localhost):\e[0m"
+read h
+hostName=${h:='localhost'}
+
+echo -e "\e[2mInput the DB username(root):\e[0m"
+read u
+userName=${u:='root'}
+
+echo -e "\e[2mInput the DB password(root):\e[0m"
+read p
+password=${p:='root'}
+
+echo -e "\e[2mInput the DB name:\e[0m"
+read dbName
+
+echo -e "\e[2mInput the backup directory path(${defaultBackupPath}):\e[0m"
+read path
+backupPath=${path:=$defaultBackupPath}
+
+# dbName不能为空
+if [[ -z $dbName ]];then
+    echo -e "\e[9m[ERROR] DB name can't be null!\e[0m"
+    exit 1
+fi
+
+# 检查给定host是否可ping通
+ping -c 1 $hostName > /dev/null 2>&1
+if [[ $? -ne 0 ]];then
+    echo -e "\e[9mCan't reach the host(${hostName})\e[0m"
+    exit 1
+fi
+
+# 创建sql备份路径
+if [[ ! -d $backupPath ]];then
+    mkdir -p $backupPath
+    chmod u+w $backupPath
+fi
+
+if [[ $? -ne 0 ]];then
+    echo '[ERROR] 备份路径创建失败，请手动创建后，再执行导出！'
+    exit 1
+fi
+
+nowDateStr=`date "+%F"`
+sqlPath=${backupPath}'mpup_api_'${nowDateStr}'.sql'
+
+mysqldump -h ${hostName} -u${userName} -p${password} --databases ${dbName} > ${sqlPath}
+
+if [[ $? -eq 0 ]];then
+    echo "backup path:"${sqlPath}
+    echo "[SUCCESS] export database ${dbName} successed!"
+else
+    echo "[ERROR] export database ${dbName} failed!"
+    exit 1
+fi
+
+# 删除七天前数据
+sevenAgoDateStr=`date -d '7 day ago' "+%F"`
+sqlFile=${backupPath}'mpup_api_'${sevenAgoDateStr}'.sql'
+
+if [[ -d ${sqlFile} ]];then
+    rm ${sqlFile}
+
+    if [[ $? -eq 0 ]];then
+        echo '[SUCCESS] delete backup sql file successed!'
+    else
+        echo '[ERROR] delete backup sql file failed!'
+        exit 1
+    fi
+fi
