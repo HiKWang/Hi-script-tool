@@ -1,1 +1,2 @@
-/home/hikwang/opt/myBase7/runbase
+#!/bin/bash
+/opt/myBase7/myBase.run > /dev/null 2>&1 &
