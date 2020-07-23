@@ -3,9 +3,19 @@
 # @Date 2020.07.22
 
 function handleGit () {
+	$statusRes = $(git status)
+	$statusRes
+	# 本地没有修改
+	if ("nothing to commit, working tree clean" -in $statusRes) {
+		git pull
+		return
+	}
+
+	# 本地有修改
+	"status next"
 	git add .
 	git commit -m "auto push on $(Get-Date)"
-	$res=(git pull)
+	$res = $(git pull)
 	$res
 	if ($res -ne "Already up to date.") {
 		git add .
