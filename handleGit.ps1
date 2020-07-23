@@ -32,6 +32,7 @@ if(Test-Path $path) {
 		if($dir.Attributes -eq "Directory") {
 			Set-Location ".\$($dir.Name)"
 			handleGit
+			"================= The End ================="
 			Set-Location ..
 		}
 	}
