@@ -4,7 +4,7 @@
 
 function handleGit () {
 	$statusRes = $(git status)
-	$statusRes
+	# $statusRes
 	# 本地没有修改
 	if ("nothing to commit, working tree clean" -in $statusRes) {
 		git pull
@@ -12,11 +12,10 @@ function handleGit () {
 	}
 
 	# 本地有修改
-	"status next"
 	git add .
 	git commit -m "auto push on $(Get-Date)"
 	$res = $(git pull)
-	$res
+	# $res
 	if ($res -ne "Already up to date.") {
 		git add .
 		git commit -m "auto push on $(Get-Date)"
@@ -32,9 +31,8 @@ if(Test-Path $path) {
 		if($dir.Attributes -eq "Directory") {
 			Set-Location ".\$($dir.Name)"
 			handleGit
-			" "
-			"================= The End ================="
-			" "
+			# "================= The End ================="
+			# " "
 			Set-Location ..
 		}
 	}
